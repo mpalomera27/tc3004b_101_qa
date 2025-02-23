@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: apt update && apt install -y python 
+      - run: apt update && apt install -y python3 
       - run: |
             cd src
             python -m http.server 8000 &
