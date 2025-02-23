@@ -24,6 +24,8 @@ jobs:
       - run: |
             cd src
             python -m http.server &
+            sleep 10 &&
+            curl http://localhost:8000
             cd ..
             cd tests
             npm install

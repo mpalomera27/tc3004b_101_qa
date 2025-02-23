@@ -6,12 +6,33 @@ describe('test1', function() {
   this.timeout(30000)
   let driver
   let vars
+  if (!fs.existsSync('./screenshots')) {
+        fs.mkdirSync('./screenshots');
+    }
   beforeEach(async function() {
-    driver = await new Builder().forBrowser('chrome').build()
+    const host = process.env.SELENIUM || 'selenium';
+          const server = `http://${host}:4444`;
+        driver = await new Builder()
+            .usingServer(server)
+            .forBrowser('chrome')
+            .build();
+    
     vars = {}
   })
   afterEach(async function() {
-    await driver.quit();
+    if (driver) {
+            // Take a screenshot of the result page
+            const filename = this.currentTest.fullTitle()
+                .replace(/['"]+/g, '')
+                .replace(/[^a-z0-9]/gi, '_')
+                .toLowerCase();;
+            const encodedString = await driver.takeScreenshot();
+            await fs.writeFileSync(`./screenshots/${filename}.png`,
+                encodedString, 'base64');
+
+            // Close the browser
+            await driver.quit();
+        }
   })
   it('test1', async function() {
     await driver.get("http://localhost:8000/")
