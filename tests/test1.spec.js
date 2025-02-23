@@ -26,7 +26,7 @@ describe('test1', function() {
                 .replace(/['"]+/g, '')
                 .replace(/[^a-z0-9]/gi, '_')
                 .toLowerCase();
-            await driver.save_screenshot(`./screenshots/${filename}.png`);
+            await driver.saveScreenshot(`./screenshots/${filename}.png`);
 
             // Close the browser
             await driver.quit();
