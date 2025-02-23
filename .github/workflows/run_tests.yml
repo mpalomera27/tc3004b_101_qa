@@ -21,10 +21,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: apt update && apt install -y python3 
       - run: |
             cd src
-            python -m http.server 8000 &
+            python3 -m http.server 8000 &
             sleep 10 &&
             curl http://localhost:8000
             cd ..
