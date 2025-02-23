@@ -11,12 +11,11 @@ describe('test1', function() {
         fs.mkdirSync('./screenshots');
     }
   beforeEach(async function() {
-    const host = process.env.SELENIUM || 'selenium';
-          const server = `http://${host}:4444`;
-        driver = await new Builder()
-            .usingServer(server)
-            .forBrowser('chrome')
-            .build();
+    const chrome = require('selenium-webdriver/chrome');
+        const options = new chrome.Options();
+        options.addArguments('--headless', '--no-sandbox', '--disable-dev-shm-usage');
+        driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
+    
     
     vars = {}
   })
