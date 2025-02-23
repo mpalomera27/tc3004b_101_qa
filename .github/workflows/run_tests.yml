@@ -22,6 +22,9 @@ jobs:
         with:
           node-version: '20'
       - run: |
+            cd src
+            python -m http.server &
+            cd ..
             cd tests
             npm install
             ./node_modules/.bin/mocha *.js
