@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "fa6fc407-abc4-4bf6-b9d9-3a4ce5d58e70",
+		"name": "calculator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42980818"
+	},
+	"item": [
+		{
+			"name": "test1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content type is application/json\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response body has the required field 'content'\", function () {",
+							"  const responseData = pm.response.json();",
+							"  pm.expect(responseData).to.have.property('content');",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content should be of type number\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  pm.expect(responseData.content).to.be.a('number');",
+							"  pm.expect(responseData.content).to.eq(2.0);",
+							"  ",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fluffy-space-spoon-wrg956qpg76w27jq-8080.app.github.dev/add?num1=1&num2=1",
+					"protocol": "https",
+					"host": [
+						"fluffy-space-spoon-wrg956qpg76w27jq-8080",
+						"app",
+						"github",
+						"dev"
+					],
+					"path": [
+						"add"
+					],
+					"query": [
+						{
+							"key": "num1",
+							"value": "1"
+						},
+						{
+							"key": "num2",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
