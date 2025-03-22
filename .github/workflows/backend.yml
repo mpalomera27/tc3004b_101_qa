@@ -25,4 +25,4 @@ jobs:
           cd backend/calculator
            ./mvnw clean spring-boot:run & \
            sleep 2 && \ 
-           curl --head -X GET --retry 5 --retry-connrefused --retry-delay 1 -v localhost:8080/add
+           curl -v --head -X GET --retry 5 --retry-connrefused --retry-delay 1  localhost:8080/add
