@@ -20,6 +20,10 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+    - name: Set up node 20 
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
     - name: Build with Maven
       run: |
           cd backend/calculator
@@ -39,3 +43,7 @@ jobs:
               sleep 5
            done
            echo "sever ready for testing"
+           npm install -g newman
+           newman -v
+           newman run test/java/com/example/integration/calculator.postman_collection.json
+           
