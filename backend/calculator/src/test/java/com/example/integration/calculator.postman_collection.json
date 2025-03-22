@@ -52,14 +52,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://fluffy-space-spoon-wrg956qpg76w27jq-8080.app.github.dev/add?num1=1&num2=1",
-					"protocol": "https",
-					"host": [
-						"fluffy-space-spoon-wrg956qpg76w27jq-8080",
-						"app",
-						"github",
-						"dev"
-					],
+					"raw": "http://localhost:8080/add?num1=1&num2=1",
+					"protocol": "http",
+					"host": [ "localhost" ],
+      					"port": "8080",
 					"path": [
 						"add"
 					],
